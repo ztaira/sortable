@@ -1,9 +1,9 @@
 ## Sortable
 
-<a href="https://eager.io/app/sortable/install?source=button">
-  <img src="https://install.eager.io/install-button.png" border="0" width="126">
-</a>
+Sortable is an open-source JavaScript and CSS library which adds sorting
+functionality to tables. It is tiny (`<2kb` min+gzip) and has no dependencies.
 
-##### [Demo](http://github.hubspot.com/sortable/docs/welcome) &nbsp;&nbsp; [Documentation](http://github.hubspot.com/sortable)
+It was originally forked off of https://github.com/HubSpot/sortable, which
+hasn't been touched in ~5 years as of this writing.
 
-Sortable is an open-source JavaScript and CSS library which adds sorting functionality to tables. It is tiny (`<2kb` min+gzip) and has no dependencies.
+It now has a few hacks.

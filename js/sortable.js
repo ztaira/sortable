@@ -1,3 +1,14 @@
+/* HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKS */
+function hack_on_attributes() {
+  let tables = document.getElementsByTagName('table');
+  for (var i=0; i<tables.length; i++) {
+    tables[i].classList.add('sortable-theme-dark');
+    tables[i].dataset.sortable = true;
+  }
+}
+hack_on_attributes();
+/* HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKS */
+
 (function() {
   var SELECTOR, addEventListener, clickEvents, numberRegExp, sortable, touchDevice, trimRegExp;
 

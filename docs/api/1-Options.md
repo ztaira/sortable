@@ -2,51 +2,35 @@
 
 #### Initializing sortable
 
-To be properly initialized and pick up the default styling, your table must add the attribute `data-sortable`.
+Your table must exist at the time of script import. All tables will be
+_forced_ to be sortable via hackery. Why would you want an unsortable table?
 
-Example:
+Before:
 
 ```html
-<table data-sortable>
+<table>
     <!-- ... -->
 </table>
 ```
 
-##### `init`
+After:
 
-All tables on the page will be automatically initted when the page is loaded.
-
-If you add tables with JavaScript, call `init` after they are added to the page:
-
-```coffeescript
-Sortable.init()
+```html
+<table class="sortable-theme-light" data-sortable="true">
+    <!-- ... -->
+</table>
 ```
 
-##### `initTable`
-
-To initialize an individual table, call `initTable`.
-
-```coffeescript
-exampleTable = document.querySelector('#exampleTable')
-Sortable.initTable(exampleTable)
-```
-
-#### Events
-
-An `CustomEvent` called `Sortable.sorted` is fired whenever a sort is completed.
-
-Here’s an example of how you might listen to this event:
-
-```coffeescript
-exampleTable = document.querySelector('#exampleTable')
-exampleTable.addEventListener 'Sortable.sorted', -> console.log '#exampleTable was sorted!'
-```
+Note: this script doesn't import the stylesheets. I've included some here,
+but importing them is up to you.
 
 #### Sorting options
 
 ##### `data-value`
 
-By default, sortable will automatically detect whether a column contains alpha or numeric data. If you'd rather have a particular column sort on custom data, set the attribute `data-value` on a `<td>`.
+By default, sortable will automatically detect whether a column contains alpha
+or numeric data. If you'd rather have a particular column sort on custom data,
+set the attribute `data-value` on a `<td>`.
 
 ```html
 <table data-sortable>
@@ -64,7 +48,8 @@ By default, sortable will automatically detect whether a column contains alpha o
 
 ##### `th` `data-sortable="false"`
 
-To disable sorting on a particular column, add `data-sortable="false"` to the `<th>` for that column.
+To disable sorting on a particular column, add `data-sortable="false"` to the
+`<th>` for that column.
 
 ```html
 <table data-sortable>
@@ -81,7 +66,9 @@ To disable sorting on a particular column, add `data-sortable="false"` to the `<
 
 ##### `th` `data-sortable-type="TYPE_NAME"`
 
-By default, the `type` of data in each column is determined by reading the first cell of a column and trying to `match` it to the list of types. To specify a type directly, use `data-sortable-type`.
+By default, the `type` of data in each column is determined by reading the
+first cell of a column and trying to `match` it to the list of types. To
+specify a type directly, use `data-sortable-type`.
 
 The default types supplied by Sortable are `alpha`, `numeric`, and `date`.
 
@@ -107,29 +94,9 @@ The default types supplied by Sortable are `alpha`, `numeric`, and `date`.
 
 #### Custom Types
 
-The default types supplied by Sortable are `alpha`, `numeric`, and `date`. To supply you own, call `Sortable.setupTypes(customTypesArray)` and pass in your custom types array.
-
-Here’s how Sortable internally sets up the defaults.
-
-```coffeescript
-sortable.setupTypes [{
-  name: 'numeric'
-  defaultSortDirection: 'descending'
-  match: (a) -> a.match numberRegExp
-  comparator: (a) -> parseFloat(a.replace(/[^0-9.-]/g, ''), 10) or 0
-}, {
-  name: 'date'
-  defaultSortDirection: 'ascending'
-  reverse: true
-  match: (a) -> not isNaN Date.parse a
-  comparator: (a) -> Date.parse(a) or 0
-}, {
-  name: 'alpha'
-  defaultSortDirection: 'ascending'
-  match: -> true
-  compare: (a, b) -> a.localeCompare b
-}]
-```
+The default types supplied by Sortable are `alpha`, `numeric`, and `date`. To
+supply you own, call `Sortable.setupTypes(customTypesArray)` and pass in your
+custom types array.
 
 Each type must specify the following:
 
@@ -140,8 +107,3 @@ Each type must specify the following:
     - `comparator` is used when you want to simply write a function to process the values before the each sort comparison is made by Sortable.
     - `compare` is used when you want to actually do handle the entire sort comparison yourself.
 - Optionally specify `reverse` to change what `ascending` and `descending` mean with respect to the sort direction of the data for this column type.
-
-<!-- Resources for the demos -->
-<p style="-webkit-transform: translateZ(0)"></p>
-<script src="/sortable/js/sortable.js"></script>
-<link rel="stylesheet" href="/sortable/css/sortable-theme-light.css" />

@@ -1,13 +1,32 @@
-@import sortable
+@import "sortable"
+@import "colors"
 
 +sortable
 
 table[data-sortable].sortable-theme-dark
-    color: #b9b9b9
-    background: #252525
+    color: $lighter_white
+    background: $darker_gray
 
     tbody td
         border-top: 1px solid #2e2e2e
 
     th[data-sorted="true"]
-        background: #2e2e2e
+        color: $darker_gray
+        background: $lighter_white
+
+        &[data-sorted-direction="descending"]:after
+            border-top-color: #cc0000
+
+        &[data-sorted-direction="ascending"]:after
+            border-bottom-color: $green
+
+    th:hover
+        background-color: $lighter_white
+        color: $darker_gray
+
+    tr:hover
+        background-color: $gray
+
+    td:hover
+        background-color: $slightly_lighter_gray
+        color: $pure_white
