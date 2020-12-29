@@ -11,7 +11,10 @@ dependencies.
 
 #### Requirements
 
-- None
+- Tables do not have multiple headers (https://github.com/HubSpot/sortable/issues/35)
+- Tables do not have multiple bodies (https://github.com/HubSpot/sortable/issues/31)
+- Tables are not nested (https://github.com/HubSpot/sortable/issues/31)
+- Tables are not changed unexpectedly via javascript (https://github.com/HubSpot/sortable/issues/37)
 
 #### Browser Support
 
