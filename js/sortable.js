@@ -20,12 +20,6 @@ hack_on_attributes();
 
   clickEvents = ['click'];
 
-  touchDevice = 'ontouchstart' in document.documentElement;
-
-  if (touchDevice) {
-    clickEvents.push('touchstart');
-  }
-
   addEventListener = function(el, event, handler) {
     if (el.addEventListener != null) {
       return el.addEventListener(event, handler, false);
